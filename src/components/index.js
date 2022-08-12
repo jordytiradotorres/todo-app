@@ -6,3 +6,4 @@ export * from "./TodoList";
 export * from "./Modal";
 export * from "./TodoForm";
 export * from "./Loader";
+export * from "./TodoHeader";
