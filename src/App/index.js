@@ -10,6 +10,7 @@ import {
   Modal,
   MessageError,
 } from "../components";
+import { ChangeAlertWithStorageListener } from "../components/ChangeAlert";
 import { useTodos } from "../hooks/useTodos";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     totalTodos,
     onInputChange,
     searchValue,
+    sincronizedTodos,
     onAddTodo,
   } = useTodos();
 
@@ -58,17 +60,6 @@ function App() {
         )}
       </TodoList>
 
-      {/* <TodoList>
-            {filteredTodos.map((todo) => (
-              <TodoItem
-                key={todo.text}
-                onComplete={onComplete}
-                onDeleteTodo={onDeleteTodo}
-                {...todo}
-              />
-            ))}
-          </TodoList> */}
-
       {openModal && (
         <Modal>
           <TodoForm onAddTodo={onAddTodo} setOpenModal={setOpenModal} />
@@ -76,54 +67,9 @@ function App() {
       )}
 
       <CreateTodoButton setOpenModal={setOpenModal} />
+      <ChangeAlertWithStorageListener sincronize={sincronizedTodos} />
     </>
   );
 }
-
-/* {!loading && !filteredTodos.length && <p>Crea tu nueva tarea</p>}
-      {error && <p>Ocurrio un Error</p>} */
-
-// function App() {
-//   const [state, setState] = useState("hola");
-
-//   return (
-//     <>
-//       <TodoHeader>
-//         <TodoCounter />
-//         <TodoSearch state={state} />
-//       </TodoHeader>
-//       <TodoList>
-//         <TodoItem />
-//       </TodoList>
-//     </>
-//   );
-// }
-// function TodoList({ children }) {
-//   return <section>{children}</section>;
-// }
-// function TodoItem() {
-//   return (
-//     <>
-//       <p>Todo item</p>
-//     </>
-//   );
-// }
-// function TodoHeader({ children }) {
-//   return <section>{children}</section>;
-// }
-// function TodoCounter() {
-//   return (
-//     <>
-//       <p>Todo counter</p>
-//     </>
-//   );
-// }
-// function TodoSearch({ state }) {
-//   return (
-//     <>
-//       <p>Todo search: {state}</p>
-//     </>
-//   );
-// }
 
 export default App;

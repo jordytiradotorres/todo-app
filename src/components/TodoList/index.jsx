@@ -23,7 +23,7 @@ export const TodoList = ({
       {!!totalTodos &&
         !filteredTodos.length &&
         onEmptySearchResults(searchValue)}
-      {filteredTodos.map(renderFunct)}
+      {!loading && !error && filteredTodos.map(renderFunct)}
     </section>
   );
 };

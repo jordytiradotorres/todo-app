@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useLocalStorage = (itemName, initialValue) => {
+  const [sincronizedItem, setSincronizedItem] = useState(true);
   const [item, setItem] = useState(initialValue);
   const [loading, setloading] = useState(true);
   const [error, setError] = useState(false);
@@ -20,11 +21,12 @@ export const useLocalStorage = (itemName, initialValue) => {
 
         setItem(parsedItem);
         setloading(false);
+        setSincronizedItem(true);
       } catch (error) {
         setError(error);
       }
     }, 2000);
-  }, []);
+  }, [sincronizedItem]);
 
   const saveItem = (newItem) => {
     try {
@@ -36,5 +38,10 @@ export const useLocalStorage = (itemName, initialValue) => {
     }
   };
 
-  return { item, saveItem, loading, error };
+  const sincronizeItem = () => {
+    setloading(true);
+    setSincronizedItem(false);
+  };
+
+  return { item, saveItem, loading, error, sincronizeItem };
 };
