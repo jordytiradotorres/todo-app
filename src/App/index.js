@@ -10,7 +10,7 @@ import {
   Modal,
   MessageError,
 } from "../components";
-import { ChangeAlertWithStorageListener } from "../components/ChangeAlert";
+import { ChangeAlert } from "../components/ChangeAlert";
 import { useTodos } from "../hooks/useTodos";
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
       )}
 
       <CreateTodoButton setOpenModal={setOpenModal} />
-      <ChangeAlertWithStorageListener sincronize={sincronizedTodos} />
+      <ChangeAlert sincronize={sincronizedTodos} />
     </>
   );
 }
