@@ -1,6 +1,6 @@
 import "./TodoSearch.css";
 
-export const TodoSearch = ({ onInputChange, searchValue }) => {
+export const TodoSearch = ({ onInputChange, searchValue, loading }) => {
   return (
     <input
       className="TodoSearch"
@@ -8,6 +8,7 @@ export const TodoSearch = ({ onInputChange, searchValue }) => {
       placeholder="Busca una tarea"
       onChange={onInputChange}
       value={searchValue}
+      disabled={loading}
     />
   );
 };

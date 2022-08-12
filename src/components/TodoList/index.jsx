@@ -1,9 +1,29 @@
 import "./TodoList.css";
 
-export const TodoList = ({ children }) => {
+export const TodoList = ({
+  error,
+  loading,
+  onError,
+  onLoading,
+  totalTodos,
+  onEmptyTodos,
+  onEmptySearchResults,
+  filteredTodos,
+  searchValue,
+  render,
+  children,
+}) => {
+  const renderFunct = children || render;
+
   return (
     <section>
-      <ul>{children}</ul>
+      {error && onError()}
+      {loading && onLoading()}
+      {!loading && !totalTodos && onEmptyTodos()}
+      {!!totalTodos &&
+        !filteredTodos.length &&
+        onEmptySearchResults(searchValue)}
+      {filteredTodos.map(renderFunct)}
     </section>
   );
 };

@@ -6,7 +6,6 @@ export const Loader = (props) => (
     style={{
       display: "flex",
       justifyContent: "center",
-      alignItems: "center",
       minHeight: "100vh",
     }}
   >
